@@ -56,12 +56,12 @@ function HomePage() {
       
 
       <Suspense fallback={<SearchResultsLoader />}>
-      <div className='container md:mx-auto md:w-10/12 xl:w-9/12 py-4 px-4'>
-        { search && "Searching for " + deferredSearchTerm + "..."}
-        {
-          search == "" ? <PopularMovies /> : <MovieResults searchTerm={deferredSearchTerm} />
-        }
-      </div>
+        <div className='container md:mx-auto md:w-10/12 xl:w-9/12 py-4 px-4'>
+          { search && "Searching for " + deferredSearchTerm + "..."}
+          {
+            search == "" ? <PopularMovies /> : <MovieResults searchTerm={deferredSearchTerm} />
+          }
+        </div>
       </Suspense>
     </>
   );

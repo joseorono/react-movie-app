@@ -19,7 +19,7 @@ export default function MovieDetailsPage() {
     <>
 
       <Suspense fallback={<MovieLoader />}>
-        <MovieDetails movieId={movieId} />
+          <MovieDetails movieId={movieId} />
       </Suspense>
 
     </>
