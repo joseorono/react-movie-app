@@ -1,6 +1,5 @@
 
-import useSWR, { Fetcher } from 'swr'
-import ErrorPage from '../pages/ErrorPage';
+import useSWR from 'swr'
 
 const movieSwrFetcher = async (url:string) => {
     const res = await fetch(url);
@@ -25,9 +24,10 @@ const movieSwrFetcher = async (url:string) => {
 //const movieSwrFetcher = (url:any) => fetch(url).then(r => r.json())
 
 export default function MovieDetails({ movieId }: any) {
-    let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_TMDBAPIKEY}`
-    console.log(url);
+    let url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${import.meta.env.VITE_TMDBAPIKEY}&append_to_response=videos,images&include_video_language=en`
+    console.log( "URL de pelicula a detallar: " + url);
     const { data, error } = useSWR(url, movieSwrFetcher, { suspense: true })
+
     
     if (error) {
         return (
@@ -50,9 +50,7 @@ export default function MovieDetails({ movieId }: any) {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                <button className="btn btn-primary">Get Started</button>
+                <h1 className="mb-5 text-7xl font-bold capitalize">{data.title}</h1>
             </div>
             </div>
         </div>
@@ -61,11 +59,32 @@ export default function MovieDetails({ movieId }: any) {
         <div className="movie-details">
             <h3>{data.title}</h3>
             <p>{data.overview}</p>
-            <p>Fecha de lanzamiento: {data.release_date}</p>
-            <p>Puntuación: {data.vote_average}</p>
-            <p>Duración: {data.runtime} minutos</p>
+            <p>Release: {data.release_date}</p>
+            <p>Score: {data.vote_average}/10</p>
+            <p>Length: {data.runtime}min</p>
             {/* Agrega más detalles aquí según tus necesidades */}
         </div>
+
+        {/* Movie Videos */}
+
+        <div className="movie-videos">
+            <h3>Trailer</h3>
+            {
+                data.videos.results.filter( (video: any) => {
+                    return video.type === "Trailer"
+                }).map(
+                    (trailer: any, index: number) => {
+                        return (
+                            <div className='text-center mt-4' key={"movieTrailer-"+index}>
+                                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${trailer.key}`} title={trailer.name} allowFullScreen></iframe>
+                            </div>
+                        )
+                })
+            }
+            
+        </div>
+
+        {/* Movie Images */}
 
     </>
     );
