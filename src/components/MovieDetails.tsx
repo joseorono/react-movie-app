@@ -2,70 +2,25 @@
 import { Form } from "react-router-dom";
 
 export default function MovieDetails() {
-  const contact = {
-    first: "Your",
-    last: "Name",
-    avatar: "https://placekitten.com/g/200/200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
+  const movie = {
+    title: "The Lord of the Rings: The Fellowship of the Ring",
+    overview: "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator.",
+    release_date: "2001-12-18",
+    vote_average: 8.3,
+    runtime: 178,
+    poster_path: "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    
+  }
 
   return (
-    <div id="contact">
-      <div>
-        <img
-          key={contact.avatar}
-          src={contact.avatar || null}
-        />
-      </div>
-
-      <div>
-        <h1>
-          {contact.first || contact.last ? (
-            <>
-              {contact.first} {contact.last}
-            </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
-        </h1>
-
-        {contact.twitter && (
-          <p>
-            <a
-              target="_blank"
-              href={`https://twitter.com/${contact.twitter}`}
-            >
-              {contact.twitter}
-            </a>
-          </p>
-        )}
-
-        {contact.notes && <p>{contact.notes}</p>}
-
-        <div>
-          <Form action="edit">
-            <button type="submit">Edit</button>
-          </Form>
-          <Form
-            method="post"
-            action="destroy"
-            onSubmit={(event) => {
-              if (
-                !confirm(
-                  "Please confirm you want to delete this record."
-                )
-              ) {
-                event.preventDefault();
-              }
-            }}
-          >
-            <button type="submit">Delete</button>
-          </Form>
-        </div>
-      </div>
-    </div>
+    <div className="movie-details">
+    <h3>{movie.title}</h3>
+    <p>{movie.overview}</p>
+    <p>Fecha de lanzamiento: {movie.release_date}</p>
+    <p>Puntuación: {movie.vote_average}</p>
+    <p>Duración: {movie.runtime} minutos</p>
+    {/* Agrega más detalles aquí según tus necesidades */}
+  </div>
   );
 }
 

@@ -1,14 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
 
 //import { render } from 'react-dom'
 
 // Pages
-import Root from "./routes/root";
-import ErrorPage from "./error-page";
+import AppLayout from "./AppLayout.tsx";
+import HomePage from './pages/HomePage.tsx';
+import ErrorPage from "./pages/ErrorPage.tsx";
 import MovieDetails from './components/MovieDetails.tsx'
+
 
 import {
   createBrowserRouter,
@@ -19,11 +20,15 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root  />,
+    element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "contacts/:contactId",
+        path: '/',
+        element: <HomePage />
+      },
+      {
+        path: "movie/:movieId",
         element: <MovieDetails />,
       },
     ],
