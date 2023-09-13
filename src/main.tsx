@@ -8,7 +8,7 @@ import './index.css'
 import AppLayout from "./AppLayout.tsx";
 import HomePage from './pages/HomePage.tsx';
 import ErrorPage from "./pages/ErrorPage.tsx";
-import MovieDetails from './components/MovieDetails.tsx'
+import MovieDetailsPage from './pages/MovieDetailsPage.tsx'
 
 
 import {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "movie/:movieId",
-        element: <MovieDetails />,
+        element: <MovieDetailsPage />,
       },
     ],
   },
