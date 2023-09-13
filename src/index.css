@@ -20,3 +20,13 @@
   color: hsl(var(--nc));
   font-weight: bold;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#Route {
+  flex: 1;
+}

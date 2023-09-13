@@ -7,7 +7,7 @@ function AppFooter() {
         Powered By TMDB
       </p>
       <p className="text-sm">
-        Hecho por Jose Orono
+        Developed by José Oroño
       </p>
     </footer>
   );
