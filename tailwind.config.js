@@ -149,3 +149,5 @@ export default {
       require("daisyui")
     ]
   }
+
+

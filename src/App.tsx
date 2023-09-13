@@ -7,7 +7,7 @@ import './App.css'
 import CopyrightFooter from './components/CopyrightFooter'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -18,9 +18,7 @@ function App() {
         </button>
       </div>
 
-
       <CopyrightFooter />
-      
       
     </>
   )
